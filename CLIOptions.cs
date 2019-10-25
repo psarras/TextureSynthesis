@@ -10,6 +10,12 @@ namespace TextureSynthesisConsole
         [Option('m', "method", Required = true, HelpText = "Method to use for synthesis synthesis, 0 = Full, 1 = Coherent, 2 = Harrison")]
         public int Method { get; set; }
 
+        [Option('o', "Output", Required = false, Default = "", HelpText = "Output directory")]
+        public string Output { get; set; }
+
+        [Option('u', "Suffix", Required = false, Default = "", HelpText = "suffix to use in the end to differentiate between multiple samples")]
+        public string Suffix { get; set; }
+
         [Option('W', "Width", Required = false, Default = 32, HelpText = "New Image width")]
         public int Width { get; set; }
 
