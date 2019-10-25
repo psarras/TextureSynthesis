@@ -56,7 +56,7 @@ static class TextureSynthesis
                 else if (method == "Coherent")
                 {
                     Console.WriteLine($"< {name}");
-                    outputArray = CoherentSynthesis(sampleArray, K, N, OW, OH, indexed, t, width, height);
+                    outputArray = CoherentSynthesis(sampleArray, width, height, K, N, OW, OH, indexed, t);
                     filename += $"K={K} t={t}";
                 }
                 else if (method == "Harrison")
@@ -77,7 +77,7 @@ static class TextureSynthesis
         Console.WriteLine($"time = {sw.ElapsedMilliseconds}");
     }
 
-    private static int[] GetPixels1D(Bitmap sample)
+    public static int[] GetPixels1D(Bitmap sample)
     {
         int[] sampleArray = new int[sample.Width * sample.Height];
         for (int j = 0; j < sample.Width * sample.Height; j++)
@@ -128,7 +128,7 @@ static class TextureSynthesis
         return result;
     }
 
-    private static int[] CoherentSynthesis(int[] sample, int K, int N, int OW, int OH, bool indexed, double t, int width, int height)
+    public static int[] CoherentSynthesis(int[] sample, int width, int height, int K, int N, int OW, int OH, bool indexed, double t)
     {
         int[] outputArray;
         List<int>[] similaritySets = null;
@@ -175,7 +175,7 @@ static class TextureSynthesis
         return result;
     }
 
-    static int[] FullSynthesis(int[] sample, int SW, int SH, int N, int OW, int OH, double t, bool indexed)
+    public static int[] FullSynthesis(int[] sample, int SW, int SH, int N, int OW, int OH, double t, bool indexed)
     {
         int[] result = new int[OW * OH];
         int?[] origins = new int?[OW * OH];
@@ -240,7 +240,7 @@ static class TextureSynthesis
         return sum;
     }
 
-    static int[] ReSynthesis(int[] sample, int SW, int SH, int N, int M, int polish, bool indexed, int OW, int OH)
+    public static int[] ReSynthesis(int[] sample, int SW, int SH, int N, int M, int polish, bool indexed, int OW, int OH)
     {
         List<int> colors = new List<int>();
         int[] indexedSample = new int[sample.Length];
