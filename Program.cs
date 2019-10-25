@@ -19,7 +19,7 @@ namespace TextureSynthesisConsole
                 int width = sample.Width;
                 int height = sample.Height;
                 int[] outputArray = new int[o.Width * o.Height];
-                string parameters = $"pass {o.Method} {o.Indexed} N={o.N} ";
+                string parameters = $" Method={o.Method} Indexed={o.Indexed} N={o.N} ";
                 switch (o.Method)
                 {
                     case 0:
